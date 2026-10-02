@@ -14,7 +14,19 @@ const manifest = {
   idPrefixes: ["tt"]
 };
 
-const builder = new addonBuilder(manifest);
+const builder = new addonBuilder({
+  id: "com.ctgmovies.stremio",
+  version: "1.0.0",
+  name: "CTG Movies",
+  description: "Addon description...",
+
+  catalogs: [], // <--- ADD THIS LINE HERE
+
+  resources: ["stream"],
+  types: ["movie", "series"],
+  idPrefixes: ["tt"]
+});
+
 
 builder.defineStreamHandler(async ({ type, id }) => {
   const [imdbId, season, episode] = id.split(":");
