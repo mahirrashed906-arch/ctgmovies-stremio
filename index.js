@@ -54,7 +54,7 @@ builder.defineStreamHandler(async ({ type, id }) => {
 
     const $watch = cheerio.load(watchRes.data);
     let streamUrl =
-      $watch("video source").attr("src") \vert{}\vert{} $watch("iframe").attr("src");
+     $watch("video source").attr("src") || $watch("iframe").attr("src");
 
     if (streamUrl) {
       if (streamUrl.startsWith("/")) streamUrl = `${BASE_URL}${streamUrl}`;
